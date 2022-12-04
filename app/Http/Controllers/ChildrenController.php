@@ -27,10 +27,10 @@ class ChildrenController extends Controller
             'children_identifier' => 'required',
             'children_bloodtype' => 'required',
             'children_birthday' => 'required',
-            'images' => 'required',
+            // 'images' => 'required',
             'supervisor_id' => 'required'
         ]);
-        DB::insert('INSERT INTO children(children_id, children_name, children_identifier, children_bloodtype,children_birthday, images, supervisor_id) VALUES (:children_id, :children_name, :children_bloodtype, :children_birthday, :images, :supervisor_id)',
+        DB::insert('INSERT INTO children(children_id, children_name, children_identifier, children_bloodtype, children_birthday, supervisor_id) VALUES (:children_id, :children_name, :children_identifier, :children_bloodtype, :children_birthday, :supervisor_id)',
         [
             'children_id' => $request->children_id,
             'children_name' => $request->children_name,
@@ -38,7 +38,7 @@ class ChildrenController extends Controller
             'children_bloodtype' => $request->children_bloodtype,
             'children_birthday' => $request->children_birthday,
             'supervisor_id' => $request->supervisor_id,
-            'images' => $request->images,
+            // 'images' => $request->images,
         ]);
         return redirect()->route('supervisor.index')->with('success', 'The child data has been successfully saved');
     }
@@ -54,18 +54,19 @@ class ChildrenController extends Controller
             'children_identifier' => 'required',
             'children_bloodtype' => 'required',
             'children_birthday' => 'required',
-            'images' => 'required',
+            // 'images' => 'required',
             'supervisor_id' => 'required',
         ]);
  // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
- DB::update('UPDATE children SET children_id = :children_id, children_name = :children_name,  children_identifier = :children_identifier, children_bloodtype = :children_bloodtype, children_birthday = :children_birthday, images = :images WHERE children_id = :id',
+ DB::update('UPDATE children SET children_id = :children_id, children_name = :children_name,  children_identifier = :children_identifier, children_bloodtype = :children_bloodtype, children_birthday = :children_birthday, WHERE children_id = :id',
  [
      'id' => $id,
      'children_id' => $request->children_id,
      'children_name' => $request->children_name,
+     'children_identifier' => $request->children_identifier,
      'children_bloodtype' => $request->children_bloodtype,
      'children_birthday' => $request->children_birthday,
-     'images' => $request->images,
+    //  'images' => $request->images,
      'supervisor_id' => $request->supervisor_id,
  ]
  );

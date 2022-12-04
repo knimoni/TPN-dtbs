@@ -113,7 +113,7 @@
         <th>Identifier</th>
         <th>Blood Type</th>
         <th>Birthday</th>
-        <th>Image</th>
+        
         <th>Supervisor ID</th>
         <th>Action</th>
       </tr>
@@ -128,7 +128,7 @@
                 <td>{{ $children->children_identifier }}</td>
                 <td>{{ $children->children_bloodtype }}</td>
                 <td>{{ $children->children_birthday }}</td>
-                <td>{{ $children->images }}</td>
+
                 <td>{{ $children->supervisor_id }}</td>
                 <td>
                     <a href="{{ route('children.edit', $children->children_id) }}" type="button" class="btn btn-warning rounded-3">Change</a>

@@ -11,15 +11,15 @@ use Illuminate\Support\Facades\Hash;
 class FarmController extends Controller
 {
     public function index() {
-        $datas = DB::select('select * from Farm');
+        $datas = DB::select('select * from farm');
 
-        return view('Supervisor.index')
+        return view('supervisor.index')
             ->with('datas', $datas);
     }
 
     public function create() {
         $Supervisor = Supervisor::all();
-        return view('Farm.add',compact('Supervisor'));
+        return view('farm.add',compact('supervisor'));
     }
 
     public function store(Request $request) {
@@ -39,13 +39,13 @@ class FarmController extends Controller
             'supervisor_id' => $request->supervisor_id,
         ]
         );
-        return redirect()->route('Supervisor.index')->with('success', 'Farm data saved successfully');
+        return redirect()->route('supervisor.index')->with('success', 'Farm data saved successfully');
     }
 
     public function edit($id) {
-        $data = DB::table('Farm')->where('farm_id', $id)->first();
+        $data = DB::table('farm')->where('farm_id', $id)->first();
         $Supervisor = Supervisor::all();
-        return view('Farm.edit')->with('data', $data,compact('Supervisor'));
+        return view('farm.edit')->with('data', $data,compact('supervisor'));
     }
 
     public function update($id, Request $request) {
@@ -66,33 +66,33 @@ class FarmController extends Controller
             'supervisor_id' => $request->supervisor_id,
         ]
         );
-        return redirect()->route('Supervisor.index')->with('success', 'Farm data successfully changed');
+        return redirect()->route('supervisor.index')->with('success', 'Farm data successfully changed');
     }
 
     public function delete($id) {
         // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
-        DB::table('Farm')
+        DB::table('farm')
         ->where('farm_id', $id)
         ->delete();
 
         // Menggunakan laravel eloquent
         // Ikan::where('id_ikan', $id)->delete();
 
-        return redirect()->route('Supervisor.index')->with('success', 'Farm data successfully deleted');
+        return redirect()->route('supervisor.index')->with('success', 'Farm data successfully deleted');
     }
     public function softDelete($id)
     {
         // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
-        DB::update('UPDATE Farm SET is_deleted = 1
+        DB::update('UPDATE farm SET is_deleted = 1
         WHERE farm_id = :farm_id', ['farm_id' => $id]);
-        return redirect()->route('Supervisor.index')->with('success', 'Farm data successfully deleted');
+        return redirect()->route('supervisor.index')->with('success', 'Farm data successfully deleted');
     }
 
     public function restore()
     {
         // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
-        DB::table('Farm')
+        DB::table('farm')
         ->update(['is_deleted' => 0]);
-        return redirect()->route('Supervisor.index')->with('success', 'Farm data successfully restored');
+        return redirect()->route('supervisor.index')->with('success', 'Farm data successfully restored');
     }
 }
