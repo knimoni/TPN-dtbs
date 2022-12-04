@@ -34,7 +34,7 @@
                 <input type="text" class="form-control" id="supervisor_identifier" name="supervisor_identifier" value="{{ $data->supervisor_identifier }}">
             </div>
 			<div class="text-center">
-				<input type="submit" class="btn btn-primary" value="Ubah" />
+				<input type="submit" class="btn btn-primary" value="Change" />
 			</div>
 		</form>
 	</div>

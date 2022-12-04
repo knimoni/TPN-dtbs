@@ -113,7 +113,7 @@
         <th>Identifier</th>
         <th>Blood Type</th>
         <th>Birthday</th>
-        
+
         <th>Supervisor ID</th>
         <th>Action</th>
       </tr>
@@ -275,7 +275,7 @@
     </tbody>
 </table>
 
-<h4 class="mt-5">Join Supervisor And Children</h4>
+<h4 class="mt-5">Join Supervisor and Children</h4>
 <table class="table table-hover mt-2">
     <thead>
       <tr>
@@ -296,7 +296,7 @@
 </tbody>
 </table>
 
-<h4 class="mt-5">Join Supervisor dan Farm</h4>
+<h4 class="mt-5">Join Supervisor and Farm</h4>
 <table class="table table-hover mt-2">
     <thead>
       <tr>

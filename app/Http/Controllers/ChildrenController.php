@@ -58,7 +58,7 @@ class ChildrenController extends Controller
             'supervisor_id' => 'required',
         ]);
  // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
- DB::update('UPDATE children SET children_id = :children_id, children_name = :children_name,  children_identifier = :children_identifier, children_bloodtype = :children_bloodtype, children_birthday = :children_birthday, WHERE children_id = :id',
+ DB::update('UPDATE children SET children_id = :children_id, children_name = :children_name,  children_identifier = :children_identifier, children_bloodtype = :children_bloodtype, children_birthday = :children_birthday, supervisor_id = :supervisor_id WHERE children_id = :id',
  [
      'id' => $id,
      'children_id' => $request->children_id,
@@ -66,7 +66,7 @@ class ChildrenController extends Controller
      'children_identifier' => $request->children_identifier,
      'children_bloodtype' => $request->children_bloodtype,
      'children_birthday' => $request->children_birthday,
-    //  'images' => $request->images,
+
      'supervisor_id' => $request->supervisor_id,
  ]
  );

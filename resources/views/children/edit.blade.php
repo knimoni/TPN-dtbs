@@ -41,16 +41,13 @@
                 <label for="children_birthday" class="form-label">Birthday</label>
                 <input type="text" class="form-control" id="children_birthday" name="children_birthday" value="{{ $data->children_birthday }}">
             </div>
-            <div class="mb-3">
-                <label for="images" class="form-label">Image</label>
-                <input type="image" class="form-control" id="images" name="images" value="{{ $data->images }}">
-            </div>
+            
             <div class="mb-3">
                 <label for="supervisor_id" class="form-label">Supervisor ID</label>
                 <input type="text" class="form-control" id="supervisor_id" name="supervisor_id" value="{{ $data->supervisor_id }}">
             </div>
 			<div class="text-center">
-				<input type="submit" class="btn btn-primary" value="Ubah" />
+				<input type="submit" class="btn btn-primary" value="Change" />
 			</div>
 		</form>
 	</div>

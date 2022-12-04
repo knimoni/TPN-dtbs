@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Farm;
-use App\Models\Supervisor;
+use App\Models\supervisor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +18,7 @@ class FarmController extends Controller
     }
 
     public function create() {
-        $Supervisor = Supervisor::all();
+        $supervisor = supervisor::all();
         return view('farm.add',compact('supervisor'));
     }
 
@@ -44,7 +44,7 @@ class FarmController extends Controller
 
     public function edit($id) {
         $data = DB::table('farm')->where('farm_id', $id)->first();
-        $Supervisor = Supervisor::all();
+        $supervisor = supervisor::all();
         return view('farm.edit')->with('data', $data,compact('supervisor'));
     }
 
