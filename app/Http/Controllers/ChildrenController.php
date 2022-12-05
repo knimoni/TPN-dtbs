@@ -92,7 +92,7 @@ public function softDelete($id)
         // Menggunakan Query Builder Laravel dan Named Bindings untuk valuesnya
         DB::table('children')
         ->update(['is_deleted' => 0]);
-        return redirect()->route('supervisor.index')->with('success', 'Data successfully restored');
+        return redirect()->route('supervisor.index')->with('success', 'Children data successfully restored');
     }
 
 }

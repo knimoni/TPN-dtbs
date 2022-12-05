@@ -2,19 +2,19 @@
 
 @section('content')
 
-<p>Search: </p>
+<p></p>
+<h2 style="text-align:center">Dataset Search</h2>
 <div class="pb-3">
     <form class="d-flex" action="{{ url('/') }}" method="get">
-        <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Masukkan kata kunci" aria-label="Search">
-        <button class="btn btn-secondary" type="submit">Search</button>
+        <input class="form-control me-1" type="search" name="katakunci" value="{{ Request::get('katakunci') }}" placeholder="Search for Dataset" aria-label="Search">
+        <button style=background-color:skyblue; class="btn btn-secondary" type="submit">Search</button>
     </form>
 </div>
 
-<h4 class="mt-5">Data Supervisor</h4>
+<h4 class="mt-4">Data Supervisor </h4>
 
 
-<a href="{{ route('supervisor.create') }}" type="button" class="btn btn-success rounded-3">Add Data</a>
-<a href="{{ route('supervisor.restore') }}" type="button" class="btn btn-success rounded-3">Restore Data</a>
+<a style="background-color:blue; border-color:blue;" style=background-color:green; href="{{ route('supervisor.create') }}" type="button" class="btn btn-success rounded-3">Add Data</a>
 
 @if($message = Session::get('success'))
     <div class="alert alert-success mt-3" role="alert">
@@ -22,13 +22,13 @@
     </div>
 @endif
 
-<table class="table table-hover mt-2">
+<table class="table table-hover mt-2 ">
     <thead>
       <tr>
-        <th>Supervisor ID</th>
-        <th>Supervisor Name</th>
-        <th>Supervisor Identifier</th>
-        <th>Action</th>
+        <th style="text-align:center">Supervisor ID</th>
+        <th style="text-align:center">Supervisor Name</th>
+        <th style="text-align:center">Supervisor Identifier</th>
+        <th style="text-align:center">Action</th>
       </tr>
     </thead>
 
@@ -36,14 +36,14 @@
     <tbody>
         @foreach ($datas as $data)
             <tr>
-                <td>{{ $data->supervisor_id }}</td>
-                <td>{{ $data->supervisor_name }}</td>
-                <td>{{ $data->supervisor_identifier }}</td>
+                <td style="text-align:center">{{ $data->supervisor_id }}</td>
+                <td style="text-align:center">{{ $data->supervisor_name }}</td>
+                <td style="text-align:center">{{ $data->supervisor_identifier }}</td>
                 <td>
-                    <a href="{{ route('supervisor.edit', $data->supervisor_id) }}" type="button" class="btn btn-warning rounded-3">Change</a>
+                    <a style="float:right;" style=color:white;  href="{{ route('supervisor.edit', $data->supervisor_id) }}" type="button" class="btn btn-warning rounded-3">Change</a>
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal{{ $data->supervisor_id }}">
+                    <button style="float:right; margin-right:10px; margin-left:10px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal{{ $data->supervisor_id }}">
                         Delete
                     </button>
 
@@ -69,7 +69,7 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#softDeleteModal{{ $data->supervisor_id }}">
+                    <button style="background-color:purple; float:right"; type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#softDeleteModal{{ $data->supervisor_id }}">
                         Soft Delete
                     </button>
 
@@ -99,23 +99,24 @@
         @endforeach
     </tbody>
 </table>
+<a style="background-color:gray; border-color:gray; float:right" href="{{ route('supervisor.restore') }}" type="button" class="btn btn-success rounded-3">Restore Data</a>
+
 
 <h4 class="mt-5">Children Data</h4>
 
-<a href="{{ route('children.create') }}" type="button" class="btn btn-success rounded-3">Add Data</a>
-<a href="{{ route('children.restore') }}" type="button" class="btn btn-success rounded-3">Restore Data</a>
+<a style="background-color:blue; border-color:blue;" href="{{ route('children.create') }}" type="button" class="btn btn-success rounded-3">Add Data</a>
 
 <table class="table table-hover mt-2">
     <thead>
       <tr>
-        <th>Children ID</th>
-        <th>Name </th>
-        <th>Identifier</th>
-        <th>Blood Type</th>
-        <th>Birthday</th>
+        <th style="text-align:center">Children ID</th>
+        <th style="text-align:center">Name </th>
+        <th style="text-align:center">Identifier</th>
+        <th style="text-align:center">Blood Type</th>
+        <th style="text-align:center">Birthday</th>
 
-        <th>Supervisor ID</th>
-        <th>Action</th>
+        <th style="text-align:center">Supervisor ID</th>
+        <th style="text-align:center">Action</th>
       </tr>
     </thead>
 
@@ -123,18 +124,18 @@
     <tbody>
         @foreach ($childrens as $children)
             <tr>
-                <td>{{ $children->children_id }}</td>
-                <td>{{ $children->children_name }}</td>
-                <td>{{ $children->children_identifier }}</td>
-                <td>{{ $children->children_bloodtype }}</td>
-                <td>{{ $children->children_birthday }}</td>
+                <td style="text-align:center">{{ $children->children_id }}</td>
+                <td style="text-align:center">{{ $children->children_name }}</td>
+                <td style="text-align:center">{{ $children->children_identifier }}</td>
+                <td style="text-align:center">{{ $children->children_bloodtype }}</td>
+                <td style="text-align:center">{{ $children->children_birthday }}</td>
 
-                <td>{{ $children->supervisor_id }}</td>
+                <td style="text-align:center">{{ $children->supervisor_id }}</td>
                 <td>
-                    <a href="{{ route('children.edit', $children->children_id) }}" type="button" class="btn btn-warning rounded-3">Change</a>
+                    <a style="float:right" href="{{ route('children.edit', $children->children_id) }}" type="button" class="btn btn-warning rounded-3">Change</a>
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal2{{ $children->children_id }}">
+                    <button style="float:right; margin-right:10px; margin-left:10px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal2{{ $children->children_id }}">
                         Delete
                     </button>
 
@@ -160,7 +161,7 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#softDeleteModal2{{ $children->children_id }}">
+                    <button style="background-color:purple; float:right"; type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#softDeleteModal2{{ $children->children_id }}">
                         Soft Delete
                     </button>
 
@@ -191,19 +192,20 @@
     </tbody>
 </table>
 
+<a style="background-color:gray; border-color:gray; float:right" href="{{ route('children.restore') }}" type="button" class="btn btn-success rounded-3">Restore Data</a>
+
 <h4 class="mt-5">Farm Data</h4>
 
-<a href="{{ route('farm.create') }}" type="button" class="btn btn-success rounded-3">Add Data</a>
-<a href="{{ route('farm.restore') }}" type="button" class="btn btn-success rounded-3">Restore Data</a>
+<a style="background-color:blue; border-color:blue;" href="{{ route('farm.create') }}" type="button" class="btn btn-success rounded-3">Add Data</a>
 
 <table class="table table-hover mt-2">
     <thead>
       <tr>
-        <th>Farm ID</th>
-        <th>name</th>
-        <th>Identifier</th>
-        <th>Supervisor ID</th>
-        <th>Action</th>
+        <th style="text-align:center">Farm ID</th>
+        <th style="text-align:center">Name</th>
+        <th style="text-align:center">Identifier</th>
+        <th style="text-align:center">Supervisor ID</th>
+        <th style="text-align:center">Action</th>
       </tr>
     </thead>
 
@@ -211,15 +213,16 @@
     <tbody>
         @foreach ($farms as $farm)
             <tr>
-                <td>{{ $farm->farm_id }}</td>
-                <td>{{ $farm->farm_name }}</td>
-                <td>{{ $farm->farm_identifier }}</td>
-                <td>{{ $farm->supervisor_id }}</td>
-                <td>
-                    <a href="{{ route('farm.edit', $farm->farm_id) }}" type="button" class="btn btn-warning rounded-3">Change</a>
+                <td style="text-align:center">{{ $farm->farm_id }}</td>
+                <td style="text-align:center">{{ $farm->farm_name }}</td>
+                <td style="text-align:center">{{ $farm->farm_identifier }}</td>
+                <td style="text-align:center">{{ $farm->supervisor_id }}</td>
+                <td style="text-align:center">
+                
+                    <a style="float:right" href="{{ route('farm.edit', $farm->farm_id) }}" type="button" class="btn btn-warning rounded-3">Change</a>
 
                     <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal3{{ $farm->farm_id }}">
+                    <button style="float:right; margin-right:10px; margin-left:10px" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#DeleteModal3{{ $farm->farm_id }}">
                         Delete
                     </button>
 
@@ -244,7 +247,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#softDeleteModal3{{ $farm->farm_id }}">
+                    <button style="background-color:purple; float:right" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#softDeleteModal3{{ $farm->farm_id }}">
                         Soft Delete
                     </button>
 
@@ -274,45 +277,47 @@
         @endforeach
     </tbody>
 </table>
+<a style="background-color:gray; border-color:gray; float:right" href="{{ route('farm.restore') }}" type="button" class="btn btn-success rounded-3">Restore Data</a>
 
-<h4 class="mt-5">Join Supervisor and Children</h4>
+<div style="white-space: pre"> </div>
+<h4 style="color:navy;" class="mt-5 text-center ">Join Supervisor and Children</h4>
 <table class="table table-hover mt-2">
     <thead>
       <tr>
-        <th>Supervisor Name</th>
-        <th>Supervisor Identifier</th>
-        <th>Children Name</th>
-        <th>Children Identifier</th>
+        <th style="text-align:center">Supervisor Name</th>
+        <th style="text-align:center">Supervisor Identifier</th>
+        <th style="text-align:center">Children Name</th>
+        <th style="text-align:center">Children Identifier</th>
       </tr>
     </thead>
 <tbody>
     @foreach ($joins as $join)
         <tr>
-            <td>{{ $join->supervisor_name }}</td>
-            <td>{{ $join->supervisor_identifier }}</td>
-            <td>{{ $join->children_name }}</td>
-            <td>{{ $join->children_identifier }}</td>
+            <td style="text-align:center">{{ $join->supervisor_name }}</td>
+            <td style="text-align:center">{{ $join->supervisor_identifier }}</td>
+            <td style="text-align:center">{{ $join->children_name }}</td>
+            <td style="text-align:center">{{ $join->children_identifier }}</td>
     @endforeach
 </tbody>
 </table>
 
-<h4 class="mt-5">Join Supervisor and Farm</h4>
+<h4 style="color:navy;" class="mt-5 text-center">Join Supervisor and Farm</h4>
 <table class="table table-hover mt-2">
     <thead>
       <tr>
-        <th>Supervisor Name</th>
-        <th>Supervisor Identifier</th>
-        <th>Farm Name</th>
-        <th>Farm Identifier</th>
+        <th style="text-align:center">Supervisor Name</th>
+        <th style="text-align:center">Supervisor Identifier</th>
+        <th style="text-align:center">Farm Name</th>
+        <th style="text-align:center">Farm Identifier</th>
       </tr>
     </thead>
 <tbody>
     @foreach ($joins2 as $join2)
         <tr>
-            <td>{{ $join2->supervisor_name }}</td>
-            <td>{{ $join2->supervisor_identifier }}</td>
-            <td>{{ $join2->farm_name }}</td>
-            <td>{{ $join2->farm_identifier }}</td>
+            <td style="text-align:center">{{ $join2->supervisor_name }}</td>
+            <td style="text-align:center">{{ $join2->supervisor_identifier }}</td>
+            <td style="text-align:center">{{ $join2->farm_name }}</td>
+            <td style="text-align:center">{{ $join2->farm_identifier }}</td>
     @endforeach
 </tbody>
 </table>
