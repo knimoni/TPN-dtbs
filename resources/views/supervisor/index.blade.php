@@ -321,4 +321,30 @@
     @endforeach
 </tbody>
 </table>
+
+<h4 style="color:navy;" class="mt-5 text-center">Join Supervisor and Farm and Children</h4>
+<table class="table table-hover mt-2">
+    <thead>
+      <tr>
+        <th style="text-align:center">Supervisor Name</th>
+        <th style="text-align:center">Supervisor Identifier</th>
+        <th style="text-align:center">Farm Name</th>
+        <th style="text-align:center">Farm Identifier</th>
+        <th style="text-align:center">Children Name</th>
+        <th style="text-align:center">Children Identifier</th>
+        
+      </tr>
+    </thead>
+<tbody>
+    @foreach ($joins3 as $join3)
+        <tr>
+            <td style="text-align:center">{{ $join3->supervisor_name }}</td>
+            <td style="text-align:center">{{ $join3->supervisor_identifier }}</td>
+            <td style="text-align:center">{{ $join3->farm_name }}</td>
+            <td style="text-align:center">{{ $join3->farm_identifier }}</td>
+            <td style="text-align:center">{{ $join3->children_name }}</td>
+            <td style="text-align:center">{{ $join3->children_identifier }}</td>
+    @endforeach
+</tbody>
+</table>
 @stop

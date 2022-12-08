@@ -14,7 +14,7 @@ class SupervisorController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }
+    }   
 
     public function index(Request $request)
     {
@@ -55,13 +55,21 @@ class SupervisorController extends Controller
             ->where('farm.is_deleted', '0')
             ->where('supervisor.is_deleted', '0')
             ->get();
+        $joins3 = DB::table('children')
+        ->join('supervisor', 'supervisor.supervisor_id', '=', 'children.supervisor_id')
+        ->join('farm', 'farm.supervisor_id', '=', 'supervisor.supervisor_id')
+        ->select('children.*', 'supervisor.*', 'farm.*')
+        ->where('supervisor.is_deleted', '0')
+        ->where('children.is_deleted', '0')
+        ->where('farm.is_deleted', '0')
+        ->get();
         return view('supervisor.index')
             ->with('datas', $datas)
             ->with('childrens', $childrens)
             ->with('farms', $farms)
             ->with('joins',$joins)
-            ->with('joins2',$joins2);
-    
+            ->with('joins2',$joins2)
+            ->with('joins3',$joins3);
     }
 
     public function create()

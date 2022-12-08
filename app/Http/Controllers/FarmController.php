@@ -75,8 +75,7 @@ class FarmController extends Controller
         ->where('farm_id', $id)
         ->delete();
 
-        // Menggunakan laravel eloquent
-        // Ikan::where('id_ikan', $id)->delete();
+    
 
         return redirect()->route('supervisor.index')->with('success', 'Farm data successfully deleted');
     }
